@@ -4,7 +4,9 @@ import com.ecommerce.config.SecurityUtility;
 import com.ecommerce.domain.security.Role;
 import com.ecommerce.domain.security.User;
 import com.ecommerce.domain.security.UserRole;
-import com.ecommerce.service.UserService;
+import com.ecommerce.repository.RoleRepository;
+import com.ecommerce.repository.UserRepository;
+import com.ecommerce.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -16,7 +18,13 @@ import java.util.Set;
 public class Bootstrap implements CommandLineRunner {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private UserRoleRepository userRoleRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -26,15 +34,21 @@ public class Bootstrap implements CommandLineRunner {
         user1.setUsername("a");
         user1.setPassword(SecurityUtility.passwordEncoder().encode("1"));
         user1.setEmail("anastasismargaritis@gmail.com");
+        this.userRepository.save(user1);
+
 
         Set<UserRole> userRoles = new HashSet<>();
 
         Role role1 = new Role();
         role1.setId(1L);
         role1.setName("ROLE_USER");
-        userRoles.add(new UserRole(1L, user1, role1));
+        this.roleRepository.save(role1);
 
-        this.userService.createUser(user1, userRoles);
+        UserRole userRole = new UserRole(1L, user1, role1);
+        this.userRoleRepository.save(userRole);
+
+        user1.getUserRoles().add(userRole);
+
         System.out.println(user1.getUsername());
 
         userRoles.clear();
@@ -51,7 +65,7 @@ public class Bootstrap implements CommandLineRunner {
         role2.setName("ROLE_ADMIN");
         userRoles.add(new UserRole(2L, user2, role2));
 
-        userService.createUser(user2, userRoles);
+//        userService.createUser(user2, userRoles);
 
         userRoles.clear();
     }
