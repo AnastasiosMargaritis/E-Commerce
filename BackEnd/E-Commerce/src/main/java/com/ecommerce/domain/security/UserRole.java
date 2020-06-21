@@ -1,9 +1,6 @@
 package com.ecommerce.domain.security;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
+@Data
 public class UserRole implements Serializable {
 
     @Id

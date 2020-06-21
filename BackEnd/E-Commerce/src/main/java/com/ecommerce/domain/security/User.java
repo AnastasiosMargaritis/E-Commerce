@@ -1,10 +1,8 @@
 package com.ecommerce.domain.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
@@ -16,6 +14,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class User implements Serializable, UserDetails {
 
     @Id
@@ -39,8 +40,9 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-        this.userRoles.forEach(ur -> authorities.add(new Authority(ur.getRole().getName())));
+        Set <GrantedAuthority> authorities = new HashSet<>();
+
+
         return authorities;
     }
 

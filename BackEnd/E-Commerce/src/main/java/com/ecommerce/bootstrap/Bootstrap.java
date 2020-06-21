@@ -49,8 +49,6 @@ public class Bootstrap implements CommandLineRunner {
 
         user1.getUserRoles().add(userRole);
 
-        System.out.println(user1.getUsername());
-
         userRoles.clear();
 
         User user2 = new User();
@@ -59,14 +57,23 @@ public class Bootstrap implements CommandLineRunner {
         user2.setUsername("Admin");
         user2.setPassword(SecurityUtility.passwordEncoder().encode("12345"));
         user2.setEmail("Admin@gmail.com");
+        this.userRepository.save(user2);
 
         Role role2 = new Role();
-        role2.setId(0L);
+        role2.setId(2L);
         role2.setName("ROLE_ADMIN");
-        userRoles.add(new UserRole(2L, user2, role2));
+        this.roleRepository.save(role2);
 
-//        userService.createUser(user2, userRoles);
+        UserRole userRole1 = new UserRole(2L, user2, role2);
+        this.userRoleRepository.save(userRole1);
+
+        user2.getUserRoles().add(userRole1);
+
+        System.out.println(user1.getUsername());
+        System.out.println(user2.getUsername());
 
         userRoles.clear();
+
+        user2.getUserRoles().forEach(ur -> System.out.println(ur.getRole().getName()));
     }
 }
