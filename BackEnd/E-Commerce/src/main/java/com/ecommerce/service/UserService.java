@@ -1,11 +1,8 @@
 package com.ecommerce.service;
 
-import com.ecommerce.domain.security.User;
-import com.ecommerce.domain.security.UserRole;
-
-import java.util.Set;
+import com.ecommerce.domain.User;
 
 public interface UserService {
 
-    User createUser(User user, Set<UserRole> userRoles);
+    User save(User user);
 }

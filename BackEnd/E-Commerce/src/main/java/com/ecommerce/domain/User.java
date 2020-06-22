@@ -1,12 +1,9 @@
-package com.ecommerce.domain.security;
+package com.ecommerce.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -31,8 +28,7 @@ public class User implements Serializable {
 
     private boolean enabled = true;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<UserRole> userRoles = new HashSet<>();
+    @Enumerated(value = EnumType.STRING)
+    private UserRole userRoles;
 
 }

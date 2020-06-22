@@ -1,17 +1,11 @@
 package com.ecommerce.bootstrap;
 
-import com.ecommerce.domain.security.Role;
-import com.ecommerce.domain.security.User;
-import com.ecommerce.domain.security.UserRole;
-import com.ecommerce.repository.RoleRepository;
+import com.ecommerce.domain.User;
+import com.ecommerce.domain.UserRole;
 import com.ecommerce.repository.UserRepository;
-import com.ecommerce.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Component
 public class Bootstrap implements CommandLineRunner {
@@ -19,11 +13,6 @@ public class Bootstrap implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private UserRoleRepository userRoleRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -33,22 +22,9 @@ public class Bootstrap implements CommandLineRunner {
         user1.setUsername("a");
         user1.setPassword("1234");
         user1.setEmail("anastasismargaritis@gmail.com");
+        user1.setUserRoles(UserRole.USER);
         this.userRepository.save(user1);
 
-
-        Set<UserRole> userRoles = new HashSet<>();
-
-        Role role1 = new Role();
-        role1.setId(1L);
-        role1.setName("ROLE_USER");
-        this.roleRepository.save(role1);
-
-        UserRole userRole = new UserRole(1L, user1, role1);
-        this.userRoleRepository.save(userRole);
-
-        user1.getUserRoles().add(userRole);
-
-        userRoles.clear();
 
         User user2 = new User();
         user2.setFirstName("Admin");
@@ -56,23 +32,8 @@ public class Bootstrap implements CommandLineRunner {
         user2.setUsername("Admin");
         user2.setPassword("12345");
         user2.setEmail("Admin@gmail.com");
+        user2.setUserRoles(UserRole.ADMIN);
         this.userRepository.save(user2);
 
-        Role role2 = new Role();
-        role2.setId(2L);
-        role2.setName("ROLE_ADMIN");
-        this.roleRepository.save(role2);
-
-        UserRole userRole1 = new UserRole(2L, user2, role2);
-        this.userRoleRepository.save(userRole1);
-
-        user2.getUserRoles().add(userRole1);
-
-        System.out.println(user1.getUsername());
-        System.out.println(user2.getUsername());
-
-        userRoles.clear();
-
-        user2.getUserRoles().forEach(ur -> System.out.println(ur.getRole().getName()));
     }
 }
