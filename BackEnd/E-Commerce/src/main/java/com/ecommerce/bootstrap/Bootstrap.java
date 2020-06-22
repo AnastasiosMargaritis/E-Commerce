@@ -1,6 +1,5 @@
 package com.ecommerce.bootstrap;
 
-import com.ecommerce.config.SecurityUtility;
 import com.ecommerce.domain.security.Role;
 import com.ecommerce.domain.security.User;
 import com.ecommerce.domain.security.UserRole;
@@ -32,7 +31,7 @@ public class Bootstrap implements CommandLineRunner {
         user1.setFirstName("Anastasios");
         user1.setLastName("Margaritis");
         user1.setUsername("a");
-        user1.setPassword(SecurityUtility.passwordEncoder().encode("1"));
+        user1.setPassword("1234");
         user1.setEmail("anastasismargaritis@gmail.com");
         this.userRepository.save(user1);
 
@@ -55,7 +54,7 @@ public class Bootstrap implements CommandLineRunner {
         user2.setFirstName("Admin");
         user2.setLastName("Admin");
         user2.setUsername("Admin");
-        user2.setPassword(SecurityUtility.passwordEncoder().encode("12345"));
+        user2.setPassword("12345");
         user2.setEmail("Admin@gmail.com");
         this.userRepository.save(user2);
 
