@@ -1,0 +1,22 @@
+<div class="container">
+  <mat-grid-list cols = "6" [style.margin-top] = "'160px'">
+    <mat-grid-tile [colspan]="1"></mat-grid-tile>
+    <mat-grid-tile [colspan]="4">
+      <form (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field class="full-width">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" name="username" id="username">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="text" name="password" id="password">
+          </mat-form-field>
+        </p>
+        <button mat-raised-button type="submit" class="mat-primary">Login</button>
+      </form>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
