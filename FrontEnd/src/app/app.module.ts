@@ -10,6 +10,9 @@ import { MatSliderModule, MatListModule, MatGridListModule,
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule } from '@angular/material';
+import { LoginService } from './services/login.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,10 @@ import { MatSliderModule, MatListModule, MatGridListModule,
     MatGridListModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule, FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

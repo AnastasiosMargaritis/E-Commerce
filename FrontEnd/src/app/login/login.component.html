@@ -2,17 +2,27 @@
   <mat-grid-list cols = "6" [style.margin-top] = "'160px'">
     <mat-grid-tile [colspan]="1"></mat-grid-tile>
     <mat-grid-tile [colspan]="4">
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <p>
           <mat-form-field class="full-width">
             <mat-label>Username</mat-label>
-            <input matInput type="text" name="username" id="username">
+            <input matInput
+              type="text"
+              name="username"
+              id="username"
+              ngModel
+              required>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field class="full-width">
             <mat-label>Password</mat-label>
-            <input matInput type="text" name="password" id="password">
+            <input matInput
+              type="text"
+              name="password"
+              id="password"
+              ngModel
+              required>
           </mat-form-field>
         </p>
         <button mat-raised-button type="submit" class="mat-primary">Login</button>
