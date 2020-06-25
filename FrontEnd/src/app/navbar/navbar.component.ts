@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { LoginService } from '../services/login.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit{
 
-  constructor() { }
+  constructor(private service: LoginService) { }
 
-  loggedIn = false;
+  loggedIn: boolean = false;
 
   ngOnInit() {
+    this.service.checkSession();
   }
 
   toggleDisplay(){

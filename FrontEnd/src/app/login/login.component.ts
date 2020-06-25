@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,9 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
   header: HttpHeaders;
 
-  constructor(private service: LoginService) { }
+
+  constructor(private service: LoginService,
+              private route: Router) { }
 
   ngOnInit() {
   }
@@ -24,7 +27,8 @@ export class LoginComponent implements OnInit {
   public getAccessToken(authRequest){
     this.service.generateToken(authRequest).subscribe(
       data => {
-        sessionStorage.setItem('token', `Bearer ${data}`);
+        this.isError = false;
+        this.route.navigate(['admin']);
       }, error => {
         this.isError = true;
         this.errorMessage = error.message;
@@ -43,8 +47,6 @@ export class LoginComponent implements OnInit {
       "username" : this.username,
       "password" : this.password
     };
-
-    console.log(authRequest);
 
     this.getAccessToken(authRequest);
 

@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="alert alert-danger" role="alert" *ngIf="isError">
+    This is a danger alert—check it out!
+  </div>
   <mat-grid-list cols = "6" [style.margin-top] = "'160px'">
     <mat-grid-tile [colspan]="1"></mat-grid-tile>
     <mat-grid-tile [colspan]="4">
