@@ -1,11 +1,13 @@
 package com.ecommerce.controller;
 
 import com.ecommerce.domain.AuthenticationRequest;
+import com.ecommerce.domain.ValidationRequest;
 import com.ecommerce.jwt.JwtUtil;
 import com.ecommerce.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,11 +36,17 @@ public class AuthenticationController {
     }
 
     @GetMapping("/validate")
-    public Boolean checkTokenSession(@RequestBody String token,
-            @RequestBody AuthenticationRequest authReq){
+    public Boolean checkTokenSession(String token){
 
-        return jwtUtil.validateToken(token, this.userDetailsService.loadUserByUsername(authReq.getUsername()));
+        return jwtUtil.checkSession(token);
+    }
 
+    @PostMapping("/session")
+    public Boolean checkSession(@RequestBody ValidationRequest validationRequest){
+        String token = validationRequest.getToken();
+        UserDetails userDetails = this.userDetailsService.loadUserByUsername(validationRequest.getUsername());
+
+        return jwtUtil.validateToken(token, userDetails);
     }
 
 }

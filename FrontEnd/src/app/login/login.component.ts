@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-
     const value = form.value;
 
     this.username = value.username;
@@ -49,7 +48,6 @@ export class LoginComponent implements OnInit {
     };
 
     this.getAccessToken(authRequest);
-
   }
 
 }
