@@ -1,0 +1,172 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="row">
+          <div class="col form-group">
+            <label for="Title">Title</label>
+            <input
+              type="text"
+              id="title"
+              class="form-control"
+              name="title"
+              ngModel
+              required
+              placeholder="Title">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col form-group">
+          <label for="Author">Author</label>
+          <input
+            type="text"
+            id="author"
+            class="form-control"
+            name="author"
+            ngModel
+            required
+            placeholder="Author">
+        </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="Publisher">Publisher</label>
+        <input
+          type="text"
+          id="Publisher"
+          class="form-control"
+          name="publisher"
+          ngModel
+          required
+          placeholder="Publisher">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="Category">Category</label>
+        <select>
+          <option value="0">--All--</option>
+          <option *ngFor="let suit of category">{{suit}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="Format">Format</label>
+        <select>
+          <option value="0">--All--</option>
+          <option *ngFor="let format of formats">{{format}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="Language">Language</label>
+        <select>
+          <option value="0">--All--</option>
+          <option *ngFor="let lg  of languages">{{lg}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="PageNumber">Page Number</label>
+        <input
+          type="number"
+          id="pageNumber"
+          class="form-control"
+          name="pageNumber"
+          ngModel
+          required
+          placeholder="Page Number">
+      </div>
+    </div>
+  <div class="row">
+    <div class="col form-group">
+      <label for="ListPrice">Price</label>
+      <input
+        type="number"
+        id="listPrice"
+        class="form-control"
+        name="listPrice"
+        ngModel
+        required
+        placeholder="Price">
+    </div>
+  </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="OurPrice">Our Price</label>
+        <input
+          type="number"
+          id="ourPrice"
+          class="form-control"
+          name="ourPrice"
+          ngModel
+          required
+          placeholder="Our Price">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="shippingWeight">Shipping Weight</label>
+        <input
+          type="number"
+          id="shippingWeight"
+          class="form-control"
+          name="shippingWeight"
+          ngModel
+          required
+          placeholder="Shipping Weight">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="Stock">Numbers in Stock</label>
+        <input
+          type="number"
+          id="stock"
+          class="form-control"
+          name="stock"
+          ngModel
+          required
+          placeholder="Numbers in Stock">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="Description">Description</label>
+        <input
+          type="text-area"
+          id="description"
+          class="form-control"
+          name="description"
+          ngModel
+          required
+          placeholder="Description">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="Image">Image</label>
+        <input
+          type="file"
+          id="image"
+          class="form-control"
+          name="image"
+          ngModel
+          required
+          placeholder="Image">
+      </div>
+    </div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -11,7 +11,7 @@
         <a class="nav-link" style="color: white; cursor: pointer;" [hidden]="!service._isLoggedIn()">View Book List</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" style="color: white; cursor: pointer;" [hidden]="!service._isLoggedIn()">Add a Book</a>
+        <a class="nav-link waves-light" style="color: white; cursor: pointer;" [hidden]="!service._isLoggedIn()" [routerLink]="['addBook']">Add a Book</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">

@@ -14,13 +14,15 @@ import { LoginService } from './services/login.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { AdminComponent } from './admin/admin.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule, FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

@@ -41,5 +41,5 @@ public class AuthenticationController {
 
         return jwtUtil.checkSession(token);
     }
-    
+
 }
