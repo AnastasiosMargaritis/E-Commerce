@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
     this.service.generateToken(authRequest).subscribe(
       data => {
         this.isError = false;
+        sessionStorage.setItem('authenticatedUser', this.username);
+        sessionStorage.setItem('token', `Bearer ${data}`);
         this.route.navigate(['admin']);
       }, error => {
         this.isError = true;
