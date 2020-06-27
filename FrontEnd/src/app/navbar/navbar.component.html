@@ -16,7 +16,7 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item ">
-        <a class="nav-link" style="color: white;" [hidden]="!service._isLoggedIn()">
+        <a class="nav-link" style="color: white; cursor: pointer;" [hidden]="!service._isLoggedIn()" (click)="onLogout()">
           <img src="../../assets/images/ec716706af423f7683c7d3e584365171.svg" width="30" height="30" alt="">
           Logout
         </a>

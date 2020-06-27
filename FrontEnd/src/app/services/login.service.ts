@@ -31,8 +31,8 @@ export class LoginService {
   }
 
   public logout(){
-    this.isLoggedIn = false;
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('authenticatedUser');
     this.router.navigate(['login'])
   }
 
