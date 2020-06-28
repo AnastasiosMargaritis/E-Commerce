@@ -29,6 +29,7 @@ export class AddBookComponent implements OnInit {
     this.service.addNewBook(form.value).subscribe(
       data => {
         this.bookAdded = true;
+        console.log(data);
       }, error =>{
         console.log(error.message);
       }

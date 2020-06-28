@@ -44,26 +44,63 @@
     </div>
     <div class="row">
       <div class="col form-group">
+        <label for="ISBN">ISBN</label>
+        <input
+          type="text"
+          id="isbn"
+          class="form-control"
+          name="isbn"
+          ngModel
+          required
+          placeholder="ISBN">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label for="Date">Publication Date</label>
+        <input
+          type="text"
+          id="publicationDate"
+          class="form-control"
+          name="publicationDate"
+          ngModel
+          required
+          placeholder="DD/MM/YYYY">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
         <label for="Category">Category</label>
-        <select>
+        <select
+        ngModel
+        id="category"
+        name="category">
           <option value="0">--All--</option>
-          <option *ngFor="let suit of category">{{suit}}</option>
+          <option *ngFor="let suit of category" #category>{{suit}}</option>
         </select>
       </div>
     </div>
     <div class="row">
       <div class="col form-group">
         <label for="Format">Format</label>
-        <select>
+        <select
+        ngModel
+        id="format"
+        name="format"
+        >
           <option value="0">--All--</option>
-          <option *ngFor="let format of formats">{{format}}</option>
+          <option *ngFor="let format of formats" #ft>{{format}}</option>
         </select>
       </div>
     </div>
     <div class="row">
       <div class="col form-group">
         <label for="Language">Language</label>
-        <select>
+        <select
+        ngModel
+        id="language"
+        name="language"
+        >
           <option value="0">--All--</option>
           <option *ngFor="let lg  of languages">{{lg}}</option>
         </select>
@@ -74,9 +111,9 @@
         <label for="PageNumber">Page Number</label>
         <input
           type="number"
-          id="pageNumber"
+          id="numberOfPages"
           class="form-control"
-          name="pageNumber"
+          name="numberOfPages"
           ngModel
           required
           placeholder="Page Number">
@@ -84,7 +121,7 @@
     </div>
   <div class="row">
     <div class="col form-group">
-      <label for="ListPrice">Price</label>
+      <label for="ListPrice">List Price</label>
       <input
         type="number"
         id="listPrice"
@@ -126,9 +163,9 @@
         <label for="Stock">Numbers in Stock</label>
         <input
           type="number"
-          id="stock"
+          id="stockNumber"
           class="form-control"
-          name="stock"
+          name="stockNumber"
           ngModel
           required
           placeholder="Numbers in Stock">
@@ -147,22 +184,9 @@
           placeholder="Description">
       </div>
     </div>
-    <div class="row">
-      <div class="col form-group">
-        <label for="Image">Image</label>
-        <input
-          type="file"
-          id="image"
-          class="form-control"
-          name="image"
-          ngModel
-          required
-          placeholder="Image">
-      </div>
-    </div>
       <div class="row">
         <div class="col">
-          <button class="btn btn-success" type="submit" routerLink="/admin" [disabled]="!f.valid">Add Book</button>
+          <button class="btn btn-success" type="submit" routerLink="/admin" [disabled]="!f.valid" (click)="onSubmit(f)">Add Book</button>
           <button type="button" class="btn btn-danger" routerLink="/admin">Cancel</button>
         </div>
       </div>

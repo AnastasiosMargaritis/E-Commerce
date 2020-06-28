@@ -10,6 +10,6 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   public addNewBook(book: Book){
-    console.log(book);
+    return this.http.post('http://localhost:8080/book/new', book);
   }
 }

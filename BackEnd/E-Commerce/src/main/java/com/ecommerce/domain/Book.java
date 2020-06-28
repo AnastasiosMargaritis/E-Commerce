@@ -2,7 +2,6 @@ package com.ecommerce.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -38,8 +37,8 @@ public class Book implements Serializable {
 
     private int stockNumber;
 
-    @Lob
-    @Transient
-    private MultipartFile image;
+//    @Lob
+//    @Transient
+//    private MultipartFile image;
 
 }
