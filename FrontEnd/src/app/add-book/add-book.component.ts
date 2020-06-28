@@ -25,7 +25,7 @@ export class AddBookComponent implements OnInit {
   }
 
   public onSubmit(form: NgForm){
-
+    console.log(form.value);
   }
 
 }
