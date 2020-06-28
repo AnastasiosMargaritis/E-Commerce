@@ -162,7 +162,7 @@
     </div>
       <div class="row">
         <div class="col">
-          <button class="btn btn-success" type="submit">Add Book</button>
+          <button class="btn btn-success" type="submit" routerLink="/admin" [disabled]="!f.valid">Add Book</button>
           <button type="button" class="btn btn-danger" routerLink="/admin">Cancel</button>
         </div>
       </div>

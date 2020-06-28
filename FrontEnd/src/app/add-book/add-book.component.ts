@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../models/book';
 import {NgForm} from '@angular/forms';
+import { BookService } from '../services/book.service';
 
 
 @Component({
@@ -19,13 +20,19 @@ export class AddBookComponent implements OnInit {
   languages = ['English', 'Greek', 'French'];
 
 
-  constructor() { }
+  constructor(private service: BookService) { }
 
   ngOnInit() {
   }
 
   public onSubmit(form: NgForm){
-    console.log(form.value);
+    this.service.addNewBook(form.value).subscribe(
+      data => {
+        this.bookAdded = true;
+      }, error =>{
+        console.log(error.message);
+      }
+    );
   }
 
 }
