@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       data => {
         this.isError = false;
         sessionStorage.setItem('authenticatedUser', this.username);
-        sessionStorage.setItem('token', `Bearer ${data}`);
+        sessionStorage.setItem('Authorization', `Bearer ${data}`);
         this.route.navigate(['admin']);
       }, error => {
         this.isError = true;

@@ -12,9 +12,11 @@ import { MatSliderModule, MatListModule, MatGridListModule,
   MatInputModule } from '@angular/material';
 import { LoginService } from './services/login.service';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { AddBookComponent } from './add-book/add-book.component';
+import { BookListComponent } from './book-list/book-list.component';
+import { InterceptorService } from './services/http/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { AddBookComponent } from './add-book/add-book.component';
     NavbarComponent,
     LoginComponent,
     AdminComponent,
-    AddBookComponent
+    AddBookComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,12 @@ import { AddBookComponent } from './add-book/add-book.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginService],
+  providers: [LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

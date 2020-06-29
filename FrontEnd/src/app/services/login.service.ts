@@ -25,13 +25,23 @@ export class LoginService {
     return this.loginHeader;
   }
 
+  getAuthenticatedUser(){
+    return sessionStorage.getItem('authenticatedUser');
+  }
+
+  getAuthenticatedToken(){
+    if(this.getAuthenticatedUser()){
+      return sessionStorage.getItem('Authorization');
+    }
+  }
+
   public _isLoggedIn(){
-    let user = sessionStorage.getItem('token');
+    let user = sessionStorage.getItem('Authorization');
     return !(user == null);
   }
 
   public logout(){
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('Authorization');
     sessionStorage.removeItem('authenticatedUser');
     this.router.navigate(['login'])
   }

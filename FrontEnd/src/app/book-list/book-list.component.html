@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">List Price</th>
+        <th scope="col">Our Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <th scope="row">{{ book.title }}</th>
+        <th scope="row">{{ book.author }}</th>
+        <th scope="row">{{ book.listPrice }}</th>
+        <th scope="row">{{ book.ourPrice }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
