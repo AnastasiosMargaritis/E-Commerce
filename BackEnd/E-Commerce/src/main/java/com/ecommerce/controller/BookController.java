@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/book")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class BookController {
 
     @Autowired
@@ -26,5 +26,11 @@ public class BookController {
     @RequestMapping("new")
     public Book createNewBook(@RequestBody Book book){
         return this.bookService.save(book);
+    }
+
+    @DeleteMapping
+    @RequestMapping("/{id}")
+    public void deleteBook(@PathVariable Long id){
+        this.bookService.delete(id);
     }
 }

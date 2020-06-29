@@ -6,6 +6,7 @@
         <th scope="col">Author</th>
         <th scope="col">List Price</th>
         <th scope="col">Our Price</th>
+        <th scope="col">Update/Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +15,9 @@
         <th scope="row">{{ book.author }}</th>
         <th scope="row">{{ book.listPrice }}</th>
         <th scope="row">{{ book.ourPrice }}</th>
+        <th scope="row">
+            <button class="btn btn-danger" (click)="onDelete(book)">Delete</button>
+        </th>
       </tr>
     </tbody>
   </table>

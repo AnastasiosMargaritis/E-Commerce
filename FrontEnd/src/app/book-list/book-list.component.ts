@@ -23,4 +23,21 @@ export class BookListComponent implements OnInit {
       }
     )
   }
+
+  public onDelete(book){
+    this.service.deleteBook(book).subscribe(
+      data => {
+        this.service.getAllBooks().subscribe(
+          data => {
+            this.books = data;
+            console.log(this.books);
+          }, error => {
+            console.log(error.message);
+          }
+        )
+      }, error => {
+        console.log(error.message)
+      }
+    );
+  }
 }

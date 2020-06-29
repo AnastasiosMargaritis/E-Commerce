@@ -14,7 +14,6 @@ export class BookService implements OnInit{
               private service: LoginService) { }
 
   ngOnInit(){
-
   }
 
   public addNewBook(book: Book){
@@ -23,5 +22,9 @@ export class BookService implements OnInit{
 
   public getAllBooks(){
     return this.http.get<Book[]>('http://localhost:8080/book/all');
+  }
+
+  public deleteBook(book: Book){
+    return this.http.delete(`http://localhost:8080/book/${book.id}`);
   }
 }
